@@ -64,3 +64,13 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Frontend requirements
+gem 'haml-rails'
+gem 'coffee-rails'
+
+# For test cases
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0'
+  gem 'factory_bot_rails'
+end

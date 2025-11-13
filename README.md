@@ -1,25 +1,26 @@
-# README
+# FinTech Portfolio Management System (mini)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What
+A small Rails app implementing:
+- Contacts dashboard with portfolios and best/worst performance.
+- Email templates with shortcodes and preview/send simulation.
+- HAML views and CoffeeScript for simple interactivity.
 
-Things you may want to cover:
+Spec reference: uploaded assignment. :contentReference[oaicite:1]{index=1}
 
-* Ruby version
+## Tech
+- Ruby (3.2.2), Rails (8.1.1), PostgreSQL
+- HAML for views, CoffeeScript for front-end snippets
+- RSpec for tests
 
-* System dependencies
+## Setup
+1. Clone repo
+2. `bundle install`
+3. Configure `config/database.yml` for PostgreSQL
+4. `rails db:create db:migrate db:seed`
+5. `rails server` and visit `http://localhost:3000` (root -> Contacts Dashboard)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# FinTech-Portfolio-Management
+## Tests
+Run:
+```bash
+bundle exec rspec

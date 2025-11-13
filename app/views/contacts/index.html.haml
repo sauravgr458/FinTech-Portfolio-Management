@@ -1,0 +1,28 @@
+%h1 Contacts Dashboard
+
+- @contacts.each do |contact|
+  .contact-card
+    %h3
+      = contact.name
+      %small= " (#{contact.email}) — Org: #{contact.organization.name}"
+
+    %ul
+      - contact.portfolios.each do |p|
+        %li
+          %strong= p.name
+          = " — Balance: #{number_to_currency(p.balance)}"
+          = "   Perf: #{p.performance}%"
+
+    %p
+      %strong Best:
+      = contact.best_portfolio_performance || 'N/A'
+      %strong Worst:
+      = contact.worst_portfolio_performance || 'N/A'
+
+    %p
+      = form_with url: send_template_contact_path(contact), method: :post, remote: false, html: {class: "template-preview-form"} do |f|
+        = select_tag :template_id, options_from_collection_for_select(@email_templates, :id, :subject), prompt: 'Select Template', class: 'template-select'
+        = button_tag '^', type: 'button', class: 'preview-btn', data: { contact_id: contact.id }
+        = button_to 'Send'
+    .preview-area{ id: "preview-#{contact.id}" }
+  %hr

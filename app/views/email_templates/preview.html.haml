@@ -1,0 +1,13 @@
+%h1 Preview Template: #{@template.subject}
+
+%hr/
+
+%h3 Subject:
+= @template.subject
+
+%h3 Body:
+%pre
+  = @template.body
+
+%p
+  %em Tokens like {Contact.name}, {Organization.name} etc. will be replaced when previewing per contact.

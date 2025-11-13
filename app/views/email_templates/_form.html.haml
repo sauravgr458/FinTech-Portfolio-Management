@@ -1,0 +1,10 @@
+= form_with model: @template do |f|
+  .form-group
+    = f.label :subject
+    = f.text_field :subject, class: 'form-control'
+  .form-group
+    = f.label :body
+    = f.text_area :body, rows: 10, class: 'form-control'
+  .form-actions
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Cancel', email_templates_path, class: 'btn btn-secondary'

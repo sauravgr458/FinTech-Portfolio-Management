@@ -1,0 +1,18 @@
+%h1 Email Templates
+= link_to '+ New Template', new_email_template_path, class: 'btn btn-primary'
+%table.table
+  %thead
+    %tr
+      %th ID
+      %th Subject
+      %th Actions
+  %tbody
+    - @email_templates.each do |t|
+      %tr
+        %td= t.id
+        %td= t.subject
+        %td
+          = link_to 'View', email_template_path(t), class: 'btn btn-sm'
+          = link_to 'Edit', edit_email_template_path(t), class: 'btn btn-sm'
+          = link_to 'Delete', email_template_path(t), method: :delete, data: { confirm: 'Delete?' }, class: 'btn btn-sm btn-danger'
+          = link_to 'Preview', preview_email_template_path(t), class: 'btn btn-sm'

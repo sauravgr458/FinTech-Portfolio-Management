@@ -10,6 +10,6 @@ class ContactMailer < ApplicationMailer
   private
 
   def default_sender_email
-    'no-reply@example.com'
+    "no-reply@example.com"
   end
 end

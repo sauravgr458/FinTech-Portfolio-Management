@@ -38,6 +38,15 @@ class EmailTemplatesController < ApplicationController
   def preview
     @template = EmailTemplate.find(params[:id])
     @contacts = Contact.all
+
+    if params[:contact_id].present?
+      contact = Contact.find_by(id: params[:contact_id])
+      if contact
+        @rendered = @template.rendered_for(contact)
+      else
+        flash.now[:alert] = "Contact not found"
+      end
+    end
   end
 
   private

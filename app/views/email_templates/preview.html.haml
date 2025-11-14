@@ -1,13 +1,19 @@
 %h1 Preview Template: #{@template.subject}
 
-%hr/
-
-%h3 Subject:
-= @template.subject
-
-%h3 Body:
-%pre
-  = @template.body
-
 %p
-  %em Tokens like {Contact.name}, {Organization.name} etc. will be replaced when previewing per contact.
+  Select a contact to preview:
+
+= form_with(url: preview_email_template_path(@template), method: :get, local: true) do
+  = select_tag :contact_id, options_from_collection_for_select(@contacts, :id, :name, params[:contact_id]), prompt: "Choose contact"
+  = submit_tag 'Preview', class: 'btn btn-secondary'
+
+- if @rendered.present?
+  %hr
+  %h3 Subject:
+  = @rendered[:subject]
+  %h3 Body:
+  %pre= @rendered[:body]
+- else
+  %hr
+  %p
+    %em Tokens like {Contact.name}, {Organization.name} will be replaced when previewing per contact.

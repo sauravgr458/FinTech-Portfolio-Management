@@ -74,3 +74,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
 end
+
+# Test mails in local
+gem "letter_opener", group: :development

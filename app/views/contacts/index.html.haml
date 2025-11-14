@@ -22,7 +22,7 @@
     %p
       = form_with url: send_template_contact_path(contact), method: :post, remote: false, html: {class: "template-preview-form"} do |f|
         = select_tag :template_id, options_from_collection_for_select(@email_templates, :id, :subject), prompt: 'Select Template', class: 'template-select'
-        = button_tag '^', type: 'button', class: 'preview-btn', data: { contact_id: contact.id }
+        = button_tag 'Preview', type: 'button', class: 'preview-btn', data: { contact_id: contact.id }
         = button_to 'Send'
     .preview-area{ id: "preview-#{contact.id}" }
   %hr
